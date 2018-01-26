@@ -1,0 +1,104 @@
+head	391.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+391.1
+date	2009.02.10.20.28.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+391.1
+log
+@-
+@
+text
+@/**
+ * Richard Caceres
+ * rcaceres [at] ucla [dot] edu
+ * $Id$ 
+ */
+
+import processing.core.*;
+
+public class Main extends PApplet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	// General Application Variables.
+	
+	public final int APPWIDTH = 1300;
+	public final int APPHEIGHT = 740;
+	public int APPBGCOLOR = 255; 
+	
+	
+	// Module variables.
+	ModuleGUIManager mgm;
+	
+	
+
+	public void setup() 
+	{
+		size(APPWIDTH, APPHEIGHT);
+		background(APPBGCOLOR);
+		//noLoop();
+		
+		
+		// Instantiate the Module Gui Manager.
+		mgm = new ModuleGUIManager (this);
+		
+		mgm.registerModule(new ModuleGUI());
+		mgm.registerModule(new ModuleGUI());
+		//mgm.registerModule(new ModuleGUI());
+		//mgm.registerModule(new ModuleGUI());
+		
+		//draw();
+	}
+
+	public void update()
+	{
+		mgm.update();
+	}
+	
+	public void mousePressed()
+	{
+		mgm.mousePressed();
+	}
+	
+	public void mouseDragged()
+	{
+		mgm.mouseDragged();
+		update();
+		graphics();
+	}
+	
+	public void graphics()
+	{
+		background (APPBGCOLOR);
+		update();
+		mgm.draw();
+	}
+	
+	public void draw() 
+	{
+		update();
+		graphics();
+	}
+
+	public static void main(String args[]) {
+		// PApplet.main(new String[] { "--present", "MyProcessingSketch" });
+		PApplet.main(new String[] { "Main" });
+		// PApplet.main(new String[] {});
+	}
+
+}@
